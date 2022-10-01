@@ -1,4 +1,15 @@
-import os, requests, time
+import requests, time, os, shutil
+
+path = os.getcwd()
+
+total, used, free = shutil.disk_usage(path)
+# Disk usage statistics
+# about the given path
+
+total_2_dp = round(total / 2**30, 2)
+used_2_dp = round(used / 2**30, 2)
+free_2_dp = round(free / 2**30, 2)
+# round to 2 decimal points
 
 def dfcleanup():
 
@@ -27,4 +38,4 @@ def clean_up_message():
         data={"from": "Mailgun Sandbox <postmaster@sandboxbc348834299148cda800650e65554426.mailgun.org>",
             "to": "Burak Yilmaz <beeyilmaz46@gmail.com>",
             "subject": "Disk clean-up complete",
-            "text": print(f"Disk Usage:\nTotal: {total_2_dp} GiB, Used: {used_2_dp} GiB, Free: {free_2_dp} GiB")})
+            "text": (f"Disk Usage:\nTotal: {total_2_dp} GiB, Used: {used_2_dp} GiB, Free: {free_2_dp} GiB")})
