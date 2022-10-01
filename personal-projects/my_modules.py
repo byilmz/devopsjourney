@@ -34,8 +34,8 @@ def dfcleanup():
 def clean_up_message():
     return requests.post(
         "https://api.mailgun.net/v3/sandboxbc348834299148cda800650e65554426.mailgun.org/messages",
-        auth=("api", "72f0b060e1e5d58ea84677479ffe14b6-4534758e-30b9fa9b"),
-        data={"from": "Mailgun Sandbox <postmaster@sandboxbc348834299148cda800650e65554426.mailgun.org>",
-            "to": "Your Name <Your_Email_Here>",
+        auth=("api", "YOUR_API_KEY"),
+        data={"from": "User <mailgun@YOUR_DOMAIN_NAME>",
+            "to": ["something@example.com", "YOU@YOUR_DOMAIN_NAME"],
             "subject": "Disk clean-up complete",
             "text": (f"Disk Usage:\nTotal: {total_2_dp} GiB, Used: {used_2_dp} GiB, Free: {free_2_dp} GiB")})
