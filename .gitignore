@@ -30,3 +30,6 @@ terraform.rc
 
 # Ignore Mail Gun API
 clean_up_msg.py
+
+#Ignore .pem files
+*.pem
