@@ -36,6 +36,6 @@ def clean_up_message():
         "https://api.mailgun.net/v3/sandboxbc348834299148cda800650e65554426.mailgun.org/messages",
         auth=("api", "72f0b060e1e5d58ea84677479ffe14b6-4534758e-30b9fa9b"),
         data={"from": "Mailgun Sandbox <postmaster@sandboxbc348834299148cda800650e65554426.mailgun.org>",
-            "to": "Burak Yilmaz <beeyilmaz46@gmail.com>",
+            "to": "Your Name <Your_Email_Here>",
             "subject": "Disk clean-up complete",
             "text": (f"Disk Usage:\nTotal: {total_2_dp} GiB, Used: {used_2_dp} GiB, Free: {free_2_dp} GiB")})
