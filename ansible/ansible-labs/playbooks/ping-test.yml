@@ -1,0 +1,9 @@
+--- #Ping-Test.yml
+
+- hosts: webservers
+  tasks:
+    - name: ping-test
+      ping:
+      
+
+

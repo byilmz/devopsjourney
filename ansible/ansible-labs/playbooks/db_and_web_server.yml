@@ -1,0 +1,22 @@
+--- #Web-Server.yml
+
+- hosts: webservers
+  tasks:
+    - name: Install all required dependencies
+      apt: 
+        name: ['python', 'python-setuptools', 'python-dev', 'build-essential'] 
+        state: present
+
+    - include: tasks/deploy_db.yml
+    - include: tasks/deploy_web.yml
+
+
+
+
+
+      
+
+
+
+
+
