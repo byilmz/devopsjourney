@@ -31,5 +31,8 @@ terraform.rc
 # Ignore Mail Gun API
 clean_up_msg.py
 
-#Ignore .pem files
+# Ignore .pem files
 *.pem
+
+# Ansible group vars
+db_and_web_servers.yml
