@@ -36,3 +36,6 @@ clean_up_msg.py
 
 # Ansible group vars
 db_and_web_servers.yml
+
+# Ignore Ansible host file
+hosts.ini
