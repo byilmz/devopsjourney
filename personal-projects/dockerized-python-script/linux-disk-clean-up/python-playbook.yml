@@ -1,0 +1,23 @@
+---
+
+# run on all hosts defined in inventory file
+- hosts: all
+
+  # become root
+  become: true
+
+  # installing pre-reqs for Python & installing Python
+  tasks:
+    - name: Install pre-requisites
+      ansible.builtin.apt: 
+        name: software-properties-common              # installing supporting software
+        state: present
+
+    - name: Add deadsnakes repo to sources list       # updating apt repo with deadsnakes
+      ansible.builtin.apt_repository:
+        repo: "ppa:deadsnakes/ppa"
+
+    - name: Install Python
+      ansible.builtin.apt: 
+        name: python3.9                               # installing Python 3.9
+        state: present
