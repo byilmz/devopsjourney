@@ -5,5 +5,4 @@ version: '2'
 services:
 
   df-clean-up:
-    image: rb07/linux-disk-cleanup:latest
-    build: .
+    image: rb07/linux-disk-cleanup:2.0
