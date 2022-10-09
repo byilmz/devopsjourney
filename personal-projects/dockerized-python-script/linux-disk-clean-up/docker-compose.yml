@@ -1,8 +1,12 @@
 # running linux clean-up app 
 
-version: '2'
+version: '3'
 
 services:
 
   df-clean-up:
     image: rb07/linux-disk-cleanup:2.0
+    container_name: df-clean-up
+
+
+
