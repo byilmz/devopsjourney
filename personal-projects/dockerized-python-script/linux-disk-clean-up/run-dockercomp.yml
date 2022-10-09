@@ -17,9 +17,13 @@
         files:
           - "docker-compose.yml"
         state: present
-      register: df_output
+        recreate: always
+        
+    - name: get docker container logs    
+      ansible.builtin.shell: docker logs df-clean-up
+      register: python_cleanup_output
 
     # output the results of .py script to cli
     - debug:
-        msg: "{{ df_output }}"
-      
+        msg: "{{ python_cleanup_output.stdout_lines }}"
+
