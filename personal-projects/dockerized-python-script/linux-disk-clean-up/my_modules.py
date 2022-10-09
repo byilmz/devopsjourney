@@ -13,7 +13,6 @@ total_2_dp = round(total / 2**30, 2)
 used_2_dp = round(used / 2**30, 2)
 free_2_dp = round(free / 2**30, 2)
 
-
 def dfcleanup():
 
     # return last modified time of file
@@ -26,7 +25,6 @@ def dfcleanup():
     s_in_days = time.time() - (days * 24 * 60 * 60) 
 
     for file in os.listdir(path):
-        #ignore the following: (.os, .exe) ==> placeholder
         filename = os.fsdecode(file)
         
         # if last modified file date is >= 40 days
