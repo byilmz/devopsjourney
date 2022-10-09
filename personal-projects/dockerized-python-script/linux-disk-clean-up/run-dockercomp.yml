@@ -17,13 +17,13 @@
         files:
           - "docker-compose.yml"
         state: present
-        recreate: always
+        recreate: always                                    # recreate container each time playbook is run so logs aren't appended
         
-    - name: get docker container logs    
+    - name: get docker container logs                       # register docker logs for df-clean-up container    
       ansible.builtin.shell: docker logs df-clean-up
       register: python_cleanup_output
 
     # output the results of .py script to cli
     - debug:
-        msg: "{{ python_cleanup_output.stdout_lines }}"
+        msg: "{{ python_cleanup_output.stdout_lines }}"     # only print stdout_lines within docker logs
 
