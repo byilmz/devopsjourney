@@ -1,7 +1,7 @@
 ---
 
-# using github.com/rbq playbook
-- name: install Docker
+# using github.com/rbq
+- name: Install Docker
   hosts: all
   become: true
   tasks:
