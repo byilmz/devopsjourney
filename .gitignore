@@ -1,20 +1,17 @@
-# Local .terraform directories
+# Ignore local .terraform directories
 **/.terraform/*
 
-# Terraform lockfile
+# Ignore Terraform lockfile
 .terraform.lock.hcl
 
-# .tfstate files
+# Ignore .tfstate files
 *.tfstate
 *.tfstate.*
 
-# Crash log files
+# Ignore crash log files
 crash.log
 
-# Exclude all .tfvars files, which are likely to contain sentitive data, such as
-# password, private keys, and other secrets. These should not be part of version
-# control as they are data points which are potentially sensitive and subject
-# to change depending on the environment.
+# Ignore .tfvars
 *.tfvars
 
 # Ignore override files as they are usually used to override resources locally and so
@@ -34,8 +31,11 @@ clean_up_msg.py
 # Ignore .pem files
 *.pem
 
-# Ansible group vars
+# Ignore Ansible group vars
 db_and_web_servers.yml
 
 # Ignore Ansible host file
 hosts.ini
+
+# Ignore __pycache__
+__pycache__
