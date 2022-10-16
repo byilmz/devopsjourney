@@ -1,29 +1,29 @@
----
+# ---
 
- - hosts: all
-   become: true
+#  - hosts: all
+#    become: true
 
-   tasks:
-    # push docker-compose file to target host
-    - name: copy file with owner & permissions
-      ansible.builtin.copy: 
-        src: /home/burak/devops/personal-projects/dockerized-python-script/linux-disk-clean-up/docker-compose.yml       
-        dest: /home/burak/docker-compose.yml                                                                    
+#    tasks:
+#     # push docker-compose file to target host
+#     - name: copy file with owner & permissions
+#       ansible.builtin.copy: 
+#         src: /home/burak/devops/personal-projects/dockerized-python-script/linux-disk-clean-up/docker-compose.yml       
+#         dest: /home/burak/docker-compose.yml                                                                    
     
-    # run python script using docker-compose
-    - name: run docker-compose up
-      community.docker.docker_compose:
-        project_src: /home/burak/
-        files:
-          - "docker-compose.yml"
-        state: present
-        recreate: always                                    # recreate container each time playbook is run so logs aren't appended
+#     # run python script using docker-compose
+#     - name: run docker-compose up
+#       community.docker.docker_compose:
+#         project_src: /home/burak/
+#         files:
+#           - "docker-compose.yml"
+#         state: present
+#         recreate: always                                    # recreate container each time playbook is run so logs aren't appended
         
-    - name: get docker container logs                       # register docker logs for df-clean-up container    
-      ansible.builtin.shell: docker logs df-clean-up
-      register: python_cleanup_output
+#     - name: get docker container logs                       # register docker logs for df-clean-up container    
+#       ansible.builtin.shell: docker logs df-clean-up
+#       register: python_cleanup_output
 
-    # output the results of .py script to cli
-    - debug:
-        msg: "{{ python_cleanup_output.stdout_lines }}"     # only print stdout_lines within docker logs
+#     # output the results of .py script to cli
+#     - debug:
+#         msg: "{{ python_cleanup_output.stdout_lines }}"     # only print stdout_lines within docker logs
 

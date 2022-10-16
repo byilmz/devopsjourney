@@ -1,8 +1,8 @@
 # import required modules
 import time, os, shutil
 
-# get current working directory
-path = os.getcwd()
+# define directory path
+path = "/tmp"
 
 # disk usage statistics
 # about the given path
@@ -25,11 +25,11 @@ def dfcleanup():
     s_in_days = time.time() - (days * 24 * 60 * 60) 
 
     for file in os.listdir(path):
-        filename = os.fsdecode(file)
+        filepath = path+"/"+file
         
         # if last modified file date is >= 40 days
         # remove file
         if timestamp >= s_in_days:
-            os.remove(filename)
+                os.remove(filepath)
 
-            break
+                break

@@ -1,14 +1,19 @@
-# alpine used as base docker image as it is a lightweight linux distribution
-# alpine shrinks the docker image so it uses significantly less space and is faster
-FROM python:3.7-alpine
-
-# set the working directory
-WORKDIR /usr/local/bin
+FROM ubuntu:latest
 
 # copy file from source to destination path
 ADD requirements.txt .
 
+# install dependencies
+RUN apt-get update
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt update
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt update && apt install -y tcl
+RUN apt install -y python3.8
+
 # using pip package manager to install dependencies specified in requirements.txt
+RUN apt-get install -y python3-pip
 RUN pip install -r requirements.txt
 
 # copy file from source to destination path
@@ -20,4 +25,4 @@ ADD my_modules.py .
 ADD clean_up_msg.py .
 
 # command to run the clean up script
-CMD ["python3", "df_cleanup.py"]
+CMD ["python3", "./df_cleanup.py"]

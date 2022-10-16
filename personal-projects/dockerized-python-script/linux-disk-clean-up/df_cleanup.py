@@ -5,7 +5,7 @@ from clean_up_msg import clean_up_message
 from my_modules import *
 
 # define threshold at which disk cleanup should be performed 
-threshold = 80
+threshold = 80     
 
 # run disk cleanup && send email alert  
 # if disk usage is greater than or equal to threshold

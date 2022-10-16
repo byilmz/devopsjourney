@@ -1,0 +1,25 @@
+---
+
+ - hosts: all
+   become: true
+
+   tasks:                                                                
+    
+    # run python script using docker-compose
+    - name: deploy docker run
+      community.docker.docker_container:
+        name: df-clean-up
+        image: rb07/df-clean-up:3.0
+        volumes:
+          - /home/burak/logs:/tmp                           # map /home/burak/logs to /tmp
+        state: present
+        recreate: yes                                       # recreate container each time playbook is run so logs aren't appended
+        
+    - name: get docker container logs                       # register docker logs for df-clean-up container    
+      ansible.builtin.shell: docker logs df-clean-up
+      register: python_cleanup_output
+
+    # output the results of .py script to cli
+    - debug:
+        msg: "{{ python_cleanup_output.stdout_lines }}"     # only print stdout_lines within docker logs
+
