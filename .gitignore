@@ -39,3 +39,6 @@ hosts.ini
 
 # Ignore __pycache__
 __pycache__
+
+# Ignore settings.json
+settings.json
