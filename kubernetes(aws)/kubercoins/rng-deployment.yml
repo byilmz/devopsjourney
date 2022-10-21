@@ -15,5 +15,11 @@ spec:
         app: rng
     spec:
       containers:
-      - image: dockercoins/rng:v0.1
-        name: rng
+        - image: dockercoins/rng:v0.1
+          name: rng
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 5
