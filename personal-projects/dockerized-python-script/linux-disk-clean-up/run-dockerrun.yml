@@ -5,7 +5,7 @@
 
    tasks:                                                                
     
-    # run python script using docker-compose
+    # run python script using docker run
     - name: deploy docker run
       community.docker.docker_container:
         name: df-clean-up
