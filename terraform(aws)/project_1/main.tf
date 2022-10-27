@@ -9,15 +9,15 @@ terraform {
 }
 
 # move .tfstate file to cloud
-terraform {
-  cloud {
-    organization = "org-name"
+# terraform {
+#   cloud {
+#     organization = "org-name"
 
-    workspaces {
-      name = "workspace-name"
-    }
-  }
-}
+#     workspaces {
+#       name = "workspace-name"
+#     }
+#   }
+# }
 
 # ec2 instance resource block
 resource "aws_instance" "my_server" {
