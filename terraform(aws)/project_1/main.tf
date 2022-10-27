@@ -122,3 +122,30 @@ module "vpc" {
   }
 }
 
+# launch config for auto scaling group
+data "aws_ami" "amazon-linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  resource "aws_launch_configuration" "my_launch1" {
+    name_prefix     = "learn-terraform-aws-asg-"
+    image_id        = data.aws_ami.amazon-linux.id
+    instance_type   = "t2.micro"
+    user_data       = data.template_file.user_data.rendered
+    security_groups = [aws_security_group.sg_my_server.id]
+
+    lifecycle {
+      create_before_destroy = true
+    }
+  }
+}
+
+# autoscaling group - default
+resource "aws_autoscaling_group" "my_asg" {
+  name                 = "my_asg"
+  min_size             = 1
+  max_size             = 3
+  desired_capacity     = 1
+  launch_configuration = aws_launch_configuration.my_launch1.name
+  vpc_zone_identifier  = module.vpc.public_subnets
+}
