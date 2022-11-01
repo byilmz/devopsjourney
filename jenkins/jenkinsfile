@@ -9,10 +9,19 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                git (url: 'https://github.com/byilmz/devops' branch: 'dev')
+            parallel {                                                                  // main stage is "Test". Has two child stages with steps running in parallel (at the same time) 
+                stage('Front-End Unit Tests') {   
+                    steps {
+                        git (url: 'https://github.com/byilmz/devops' branch: 'dev')
             }
         }
+                stage{'Log'} {
+                    steps {
+                        sh 'ls -la'
+            }
+        }
+    }
+}
         stage('Deploy') {
             steps {
                 git (url: 'https://github.com/byilmz/devops' branch: 'dev')
