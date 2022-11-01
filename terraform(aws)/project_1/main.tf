@@ -149,3 +149,24 @@ resource "aws_autoscaling_group" "my_asg" {
   launch_configuration = aws_launch_configuration.my_launch1.name
   vpc_zone_identifier  = module.vpc.public_subnets
 }
+
+# application load balancer
+resource "aws_lb" "my_lb" {
+  name               = "my-lb-tf"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.sg_my_server.id]
+  subnets            = [for subnet in public_subnets : subnet.id]
+
+  enable_deletion_protection = true
+
+  access_logs {
+    bucket  = aws_s3_bucket.bucket.bucket
+    prefix  = "test-lb"
+    enabled = true
+  }
+
+  tags = {
+    Environment = "dev"
+  }
+}
