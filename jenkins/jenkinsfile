@@ -2,21 +2,20 @@
 
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                git (url: 'https://github.com/byilmz/devops' branch: 'dev')
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
+                git (url: 'https://github.com/byilmz/devops' branch: 'dev')
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                git (url: 'https://github.com/byilmz/devops' branch: 'dev')
             }
         }
     }
